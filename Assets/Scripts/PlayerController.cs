@@ -16,5 +16,7 @@ public class PlayerController : MonoBehaviour
 		rb.velocity += new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis ("Vertical"));
 		rb.velocity.Normalize ();
 		rb.velocity *= Speed;
+		Vector3 mousePos = Input.mousePosition;
+		transform.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 0)), new Vector3(0, 0, 1));
 	}
 }
