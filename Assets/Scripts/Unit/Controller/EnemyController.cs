@@ -43,8 +43,8 @@ public class EnemyController : IController
 	{
 		if(CanSeePlayer())
 		{
-			return PlayerPosition;
+			return PlayerPosition - VectorUtils.V3ToV2(gameObject.transform.position);
 		}
-		return VectorUtils.V3ToV2(gameObject.transform.position + new Vector3(0, 1, 0));
+		return new Vector2(0, 1);
 	}
 }

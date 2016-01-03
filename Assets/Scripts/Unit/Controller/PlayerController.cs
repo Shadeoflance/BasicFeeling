@@ -14,7 +14,7 @@ public class PlayerController : IController
 	}
 	public bool NeedShoot()
 	{
-		return false;
+		return Input.GetMouseButtonDown(0);
 	}
 	public bool NeedUse()
 	{
@@ -23,6 +23,6 @@ public class PlayerController : IController
 	public Vector2 LookAt()
 	{
 		Vector3 mousePos = Input.mousePosition;
-		return VectorUtils.V3ToV2(Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 0)));
+		return VectorUtils.V3ToV2(Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 0)) - gameObject.transform.position);
 	}
 }
