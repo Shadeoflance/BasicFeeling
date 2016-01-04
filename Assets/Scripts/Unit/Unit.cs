@@ -5,7 +5,6 @@ public class Unit : MonoBehaviour
 {
 	protected IController controller;
 	public float Speed;
-	public GameObject Bullet;
 	Rigidbody2D rb;
 	virtual protected void Awake()
 	{
@@ -24,8 +23,9 @@ public class Unit : MonoBehaviour
 
 		if(controller.NeedShoot())
 		{
-			GameObject createdBullet = Instantiate(Bullet, transform.position, transform.rotation) as GameObject;
-			(createdBullet.GetComponent(typeof(Rigidbody2D)) as Rigidbody2D).velocity = createdBullet.transform.up * 8;
+			Transform weapon = transform.FindChild("Weapon");
+			if(weapon != null)
+				weapon.gameObject.GetComponent<Weapon>().Shoot(dir + transform.position);
 		}
 	}
 }
