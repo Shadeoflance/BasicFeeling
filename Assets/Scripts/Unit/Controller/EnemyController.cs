@@ -33,7 +33,7 @@ public class EnemyController : IController
 	}
 	public bool NeedShoot()
 	{
-		return false;
+		return CanSeePlayer();
 	}
 	public bool NeedUse()
 	{
