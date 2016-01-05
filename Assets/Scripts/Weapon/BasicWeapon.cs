@@ -18,7 +18,7 @@ public class BasicWeapon : Weapon
 		else Timer = CoolDown;
 		dir -= VectorUtils.V3ToV2(transform.position);
 		var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
-		GameObject createdBullet = Instantiate(Bullet, transform.position, Quaternion.AngleAxis(angle, Vector3.forward)) as GameObject;
+		GameObject createdBullet = Instantiate(Bullet, transform.position + VectorUtils.V2ToV3(dir.normalized * 0.15f), Quaternion.AngleAxis(angle, Vector3.forward)) as GameObject;
 		createdBullet.GetComponent<Rigidbody2D>().velocity = createdBullet.transform.up * BulletSpeed;
 		createdBullet.GetComponent<Bullet>().KillMask = KillMask.value;
 		createdBullet.GetComponent<Bullet>().NoCollisionMask = NoCollisionMask.value;

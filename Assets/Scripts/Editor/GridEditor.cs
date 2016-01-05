@@ -9,6 +9,15 @@ public class GridEditor :  Editor
 	GameObject level;
 	public override void OnInspectorGUI()
 	{
+		GUILayout.BeginHorizontal();
+		GUILayout.Label(" Grid Width ");
+		grid.width = EditorGUILayout.FloatField(grid.width, GUILayout.Width(50));
+		GUILayout.EndHorizontal();
+		
+		GUILayout.BeginHorizontal();
+		GUILayout.Label(" Grid Height ");
+		grid.height = EditorGUILayout.FloatField(grid.height, GUILayout.Width(50));
+		GUILayout.EndHorizontal();
 		grid.color = EditorGUILayout.ColorField("Grid Color", grid.color);
 		grid.current = EditorGUILayout.ObjectField("Current Object", grid.current, typeof(GameObject), true) as GameObject;
 	}

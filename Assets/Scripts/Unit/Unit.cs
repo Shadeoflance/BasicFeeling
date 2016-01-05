@@ -6,9 +6,11 @@ public class Unit : MonoBehaviour
 	protected IController controller;
 	public float Speed;
 	Rigidbody2D rb;
+	Weapon weapon;
 	virtual protected void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		weapon = transform.GetComponentInChildren<Weapon>();
 	}
 	virtual protected void Update () 
 	{
@@ -23,9 +25,8 @@ public class Unit : MonoBehaviour
 
 		if(controller.NeedShoot())
 		{
-			Transform weapon = transform.FindChild("Weapon");
 			if(weapon != null)
-				weapon.gameObject.GetComponent<Weapon>().Shoot(dir + transform.position);
+				weapon.Shoot(dir + transform.position);
 		}
 	}
 }
